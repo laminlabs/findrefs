@@ -18,9 +18,9 @@ class Reference(Record, CanValidate, TracksRun, TracksUpdates):
     """References.
 
     Example:
-        >>> reference = ClinicalTrial(
-        ...     name="NCT00000000",
-        ...     description="A findrefsl trial to evaluate the efficacy of drug X in patients with disease Y.",
+        >>> reference = Reference(
+        ...     name="A paper title",
+        ...     doi="A doi",
         ... ).save()
     """
 
