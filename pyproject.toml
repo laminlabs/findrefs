@@ -8,6 +8,7 @@ authors = [{name = "Lamin Labs", email = "open-source@lamin.ai"}]
 readme = "README.md"
 dynamic = ["version", "description"]
 dependencies = [
+    "lamindb"
 ]
 
 [project.urls]
@@ -30,7 +31,7 @@ testpaths = [
 [tool.ruff]
 src = ["src"]
 line-length = 88
-select = [
+lint.select = [
     "F",  # Errors detected by Pyflakes
     "E",  # Error detected by Pycodestyle
     "W",  # Warning detected by Pycodestyle
@@ -47,7 +48,7 @@ select = [
     "PTH",  # Use pathlib
     "S"  # Security
 ]
-ignore = [
+lint.ignore = [
     # Do not catch blind exception: `Exception`
     "BLE001",
     # Errors from function calls in argument defaults. These are fine when the result is immutable.
@@ -84,8 +85,6 @@ ignore = [
     "D213",
     # Section underline is over-indented ("{name}")
     "D215",
-    # First line should end with a period
-    "D400",
     # First line should be in imperative mood; try rephrasing
     "D401",
     # First word of the first line should be capitalized: {} -> {}
@@ -104,6 +103,8 @@ ignore = [
     "D412",
     # Missing blank line after last section ("{name}")
     "D413",
+    # Missing argument description in the docstring
+    "D417",
     # Imports unused
     "F401",
     # camcelcase imported as lowercase
@@ -118,10 +119,10 @@ ignore = [
     "S607"
 ]
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "docs/*" = ["I"]
 "tests/**/*.py" = [
     "D",  # docstrings are allowed to look a bit off

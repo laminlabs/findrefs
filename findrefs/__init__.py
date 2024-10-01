@@ -1,19 +1,17 @@
-"""A clinical schema.
+"""A reference manager.
+
+This schema provides a single registry `Reference` to store references to studies, reports, papers, blog posts, preprints.
 
 Import the package::
 
-   import findrefs
+   import findrefs as fr
 
 This is the complete API reference:
 
 .. autosummary::
    :toctree: .
 
-   Biosample
-   ClinicalTrial
-   Medication
-   Patient
-   Treatment
+    Reference
 """
 
 __version__ = "0.0.1"  # denote a pre-release for 0.1.0 with 0.1rc1
@@ -29,10 +27,4 @@ def __getattr__(name):
 
 if _check_instance_setup():
     del __getattr__  # delete so that imports work out
-    from .models import (
-        Biosample,
-        ClinicalTrial,
-        Medication,
-        Patient,
-        Treatment,
-    )
+    from .models import Reference

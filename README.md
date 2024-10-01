@@ -1,6 +1,6 @@
-# findrefs: A clinical schema
+# findrefs: A reference manager
 
-This schema is focused on the fundamental concepts of clinical data models.
+This schema provides a single registry `Reference` to store references to studies, reports, papers, blog posts, preprints.
 
 ## Contributing
 
