@@ -102,8 +102,8 @@ ENV/
 
 # Lamin
 _build
-docs/references.*
+docs/findrefs.*
 lamin_sphinx
 docs/conf.py
 _docs_tmp*
-docs/test-references/
+docs/test-findrefs/

@@ -2,7 +2,7 @@
 
 Import the package::
 
-   import references
+   import findrefs
 
 This is the complete API reference:
 
@@ -23,7 +23,7 @@ from lamindb_setup import _check_instance_setup
 
 def __getattr__(name):
     if name != "models":
-        _check_instance_setup(from_module="references")
+        _check_instance_setup(from_module="findrefs")
     return globals()[name]
 
 

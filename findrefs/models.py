@@ -25,7 +25,7 @@ class ClinicalTrial(Record, CanValidate, TracksRun, TracksUpdates):
     Example:
         >>> trail = ClinicalTrial(
         ...     name="NCT00000000",
-        ...     description="A referencesl trial to evaluate the efficacy of drug X in patients with disease Y.",
+        ...     description="A findrefsl trial to evaluate the efficacy of drug X in patients with disease Y.",
         ... ).save()
     """
 
