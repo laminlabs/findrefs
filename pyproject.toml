@@ -3,7 +3,7 @@ requires = ["flit_core >=3.2,<4"]
 build-backend = "flit_core.buildapi"
 
 [project]
-name = "refs"
+name = "references"
 authors = [{name = "Lamin Labs", email = "open-source@lamin.ai"}]
 readme = "README.md"
 dynamic = ["version", "description"]
@@ -11,7 +11,7 @@ dependencies = [
 ]
 
 [project.urls]
-Home = "https://github.com/laminlabs/refs"
+Home = "https://github.com/laminlabs/references"
 
 [project.optional-dependencies]
 dev = [

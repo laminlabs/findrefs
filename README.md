@@ -1,4 +1,4 @@
-# refs: A clinical schema
+# references: A clinical schema
 
 This schema is focused on the fundamental concepts of clinical data models.
 
