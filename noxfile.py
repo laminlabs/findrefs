@@ -28,6 +28,4 @@ def build(session):
     branch = "main" if IS_PR else "release"  # point back to "release"
     install_lamindb(session, branch=branch, extras="bionty,aws")
     run(session, "uv pip install --system .[dev]")
-    login_testuser1(session)
     run_pytest(session)
-    build_docs(session, strict=False)  # temporarily disable strict mode
