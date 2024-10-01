@@ -48,7 +48,7 @@ class Reference(Record, CanValidate, TracksRun, TracksUpdates):
     text: str | None = models.TextField(null=True, default=None)
     """Text of the reference included in search, e.g. the abstract or the full-text."""
     artifacts: Artifact = models.ManyToManyField(
-        Artifact, through="ArtifactClinicalTrial", related_name="references"
+        Artifact, through="ArtifactReference", related_name="references"
     )
     """Artifacts labeled with this reference."""
 
