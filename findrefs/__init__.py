@@ -1,6 +1,6 @@
 """A reference manager.
 
-This schema provides a single registry `Reference` to store references to studies, reports, papers, blog posts, preprints.
+This schema module provides a single registry `Reference` to store references to studies, reports, papers, blog posts, preprints.
 
 Import the package::
 
