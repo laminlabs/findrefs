@@ -4,9 +4,9 @@ This schema provides a single registry `Reference` to store references to studie
 
 Import the package::
 
-   import findrefs as fr
+   import findrefs as frefs
 
-This is the complete API reference:
+The `Reference` registry:
 
 .. autosummary::
    :toctree: .
