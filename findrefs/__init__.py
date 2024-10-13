@@ -1,4 +1,4 @@
-"""A reference manager.
+"""A reference manager [`source <https://github.com/laminlabs/findrefs/blob/main/findrefs/models.py>`__].
 
 This schema module provides a single registry `Reference` to store references to studies, reports, papers, blog posts, preprints.
 
