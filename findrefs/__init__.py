@@ -2,6 +2,10 @@
 
 This schema module provides a single registry `Reference` to store references to studies, reports, papers, blog posts, preprints.
 
+Install the package::
+
+   pip install findrefs
+
 Import the package::
 
    import findrefs as frefs
