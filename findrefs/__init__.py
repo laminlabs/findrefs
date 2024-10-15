@@ -2,13 +2,14 @@
 
 This schema module provides a single registry `Reference` to store references to studies, reports, papers, blog posts, preprints.
 
-Install the package::
+Install and mount `findrefs` in a new instance:
 
-   pip install findrefs
+>>> pip install findrefs
+>>> lamin init --storage ./test-findrefs --schema findrefs
 
-Import the package::
+Import the package:
 
-   import findrefs as frefs
+>>> import findrefs as frefs
 
 The `Reference` registry:
 
