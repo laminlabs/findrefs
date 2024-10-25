@@ -15,7 +15,7 @@ from lnschema_core.models import (
 
 
 class Reference(Record, CanValidate, TracksRun, TracksUpdates):
-    """References.
+    """References such as a publication or document, with unique identifiers and metadata.
 
     Example:
         >>> reference = Reference(
@@ -32,21 +32,21 @@ class Reference(Record, CanValidate, TracksRun, TracksUpdates):
     uid: str = models.CharField(unique=True, max_length=12, default=ids.base62_12)
     """Universal id, valid across DB instances."""
     name: str = models.CharField(max_length=255, default=None, db_index=True)
-    """Title or name of the reference."""
+    """Title or name of the reference document."""
     abbr: str | None = models.CharField(
         max_length=32, db_index=True, unique=True, null=True, default=None
     )
-    """A unique abbreviation."""
+    """A unique abbreviation for the reference."""
     url: str | None = models.URLField(max_length=255, null=True, default=None)
-    """A URL to view."""
+    """URL linking to the reference."""
     pubmed_id: int | None = models.BigIntegerField(null=True, default=None)
-    """A pudbmed ID."""
+    """A PudMmed ID."""
     doi: int | None = models.CharField(
         max_length=255, null=True, default=None, db_index=True
     )
-    """A DOI."""
+    """Digital Object Identifier (DOI) for the reference."""
     text: str | None = models.TextField(null=True, default=None)
-    """Text of the reference included in search, e.g. the abstract or the full-text."""
+    """Text of the reference such as the abstract or the full-text to enable search."""
     artifacts: Artifact = models.ManyToManyField(
         Artifact, through="ArtifactReference", related_name="references"
     )

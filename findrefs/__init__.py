@@ -9,7 +9,7 @@ Install and mount `findrefs` in a new instance:
 
 Import the package:
 
->>> import findrefs as frefs
+>>> import findrefs as fr
 
 The `Reference` registry:
 
