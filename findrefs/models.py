@@ -51,7 +51,7 @@ class Reference(Record, CanValidate, TracksRun, TracksUpdates):
     """URL linking to the reference."""
     pubmed_id: int | None = BigIntegerField(null=True)
     """A PudMmed ID."""
-    doi: int | None = CharField(max_length=255, null=True, db_index=True)
+    doi: int | None = CharField(null=True, db_index=True)
     """Digital Object Identifier (DOI) for the reference."""
     text: str | None = TextField(null=True)
     """Text of the reference such as the abstract or the full-text to enable search."""
