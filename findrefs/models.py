@@ -36,21 +36,24 @@ class Reference(Record, CanValidate, TracksRun, TracksUpdates):
 
     id: int = models.AutoField(primary_key=True)
     """Internal id, valid only in one DB instance."""
-    uid: str = CharField(unique=True, max_length=12, default=ids.base62_12)
+    uid: str = CharField(max_length=12, unique=True, default=ids.base62_12)
     """Universal id, valid across DB instances."""
-    name: str = CharField(max_length=255, default=None, db_index=True)
+    name: str = CharField(db_index=True)
     """Title or name of the reference document."""
     abbr: str | None = CharField(
-        max_length=32, db_index=True, unique=True, null=True, default=None
+        max_length=32,
+        db_index=True,
+        unique=True,
+        null=True,
     )
     """A unique abbreviation for the reference."""
-    url: str | None = models.URLField(max_length=255, null=True, default=None)
+    url: str | None = models.URLField(null=True)
     """URL linking to the reference."""
-    pubmed_id: int | None = BigIntegerField(null=True, default=None)
+    pubmed_id: int | None = BigIntegerField(null=True)
     """A PudMmed ID."""
-    doi: int | None = CharField(max_length=255, null=True, default=None, db_index=True)
+    doi: int | None = CharField(max_length=255, null=True, db_index=True)
     """Digital Object Identifier (DOI) for the reference."""
-    text: str | None = TextField(null=True, default=None)
+    text: str | None = TextField(null=True)
     """Text of the reference such as the abstract or the full-text to enable search."""
     artifacts: Artifact = models.ManyToManyField(
         Artifact, through="ArtifactReference", related_name="references"
