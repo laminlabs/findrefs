@@ -3,6 +3,7 @@ from __future__ import annotations
 from django.db import models
 from django.db.models import CASCADE, PROTECT
 from lnschema_core import ids
+from lnschema_core.fields import BooleanField, CharField, ForeignKey, TextField
 from lnschema_core.models import (
     Artifact,
     CanValidate,
@@ -12,7 +13,6 @@ from lnschema_core.models import (
     TracksRun,
     TracksUpdates,
 )
-from lnschema_core.fields import CharField, TextField, ForeignKey, BooleanField
 
 
 class Reference(Record, CanValidate, TracksRun, TracksUpdates):
