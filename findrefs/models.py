@@ -3,7 +3,13 @@ from __future__ import annotations
 from django.db import models
 from django.db.models import CASCADE, PROTECT
 from lnschema_core import ids
-from lnschema_core.fields import BooleanField, CharField, ForeignKey, TextField
+from lnschema_core.fields import (
+    BigIntegerField,
+    BooleanField,
+    CharField,
+    ForeignKey,
+    TextField,
+)
 from lnschema_core.models import (
     Artifact,
     CanValidate,
@@ -40,7 +46,7 @@ class Reference(Record, CanValidate, TracksRun, TracksUpdates):
     """A unique abbreviation for the reference."""
     url: str | None = models.URLField(max_length=255, null=True, default=None)
     """URL linking to the reference."""
-    pubmed_id: int | None = models.BigIntegerField(null=True, default=None)
+    pubmed_id: int | None = BigIntegerField(null=True, default=None)
     """A PudMmed ID."""
     doi: int | None = CharField(max_length=255, null=True, default=None, db_index=True)
     """Digital Object Identifier (DOI) for the reference."""
