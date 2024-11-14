@@ -12,6 +12,7 @@ from lnschema_core.models import (
     TracksRun,
     TracksUpdates,
 )
+from lnschema_core.fields import CharField, TextField, ForeignKey, BooleanField
 
 
 class Reference(Record, CanValidate, TracksRun, TracksUpdates):
@@ -29,11 +30,11 @@ class Reference(Record, CanValidate, TracksRun, TracksUpdates):
 
     id: int = models.AutoField(primary_key=True)
     """Internal id, valid only in one DB instance."""
-    uid: str = models.CharField(unique=True, max_length=12, default=ids.base62_12)
+    uid: str = CharField(unique=True, max_length=12, default=ids.base62_12)
     """Universal id, valid across DB instances."""
-    name: str = models.CharField(max_length=255, default=None, db_index=True)
+    name: str = CharField(max_length=255, default=None, db_index=True)
     """Title or name of the reference document."""
-    abbr: str | None = models.CharField(
+    abbr: str | None = CharField(
         max_length=32, db_index=True, unique=True, null=True, default=None
     )
     """A unique abbreviation for the reference."""
@@ -41,11 +42,9 @@ class Reference(Record, CanValidate, TracksRun, TracksUpdates):
     """URL linking to the reference."""
     pubmed_id: int | None = models.BigIntegerField(null=True, default=None)
     """A PudMmed ID."""
-    doi: int | None = models.CharField(
-        max_length=255, null=True, default=None, db_index=True
-    )
+    doi: int | None = CharField(max_length=255, null=True, default=None, db_index=True)
     """Digital Object Identifier (DOI) for the reference."""
-    text: str | None = models.TextField(null=True, default=None)
+    text: str | None = TextField(null=True, default=None)
     """Text of the reference such as the abstract or the full-text to enable search."""
     artifacts: Artifact = models.ManyToManyField(
         Artifact, through="ArtifactReference", related_name="references"
@@ -55,18 +54,14 @@ class Reference(Record, CanValidate, TracksRun, TracksUpdates):
 
 class ArtifactReference(Record, LinkORM, TracksRun):
     id: int = models.BigAutoField(primary_key=True)
-    artifact: Artifact = models.ForeignKey(
-        Artifact, CASCADE, related_name="links_reference"
-    )
-    reference: Reference = models.ForeignKey(
-        Reference, PROTECT, related_name="links_artifact"
-    )
-    feature: Feature = models.ForeignKey(
+    artifact: Artifact = ForeignKey(Artifact, CASCADE, related_name="links_reference")
+    reference: Reference = ForeignKey(Reference, PROTECT, related_name="links_artifact")
+    feature: Feature = ForeignKey(
         Feature,
         PROTECT,
         null=True,
         default=None,
         related_name="links_artifactreference",
     )
-    label_ref_is_name: bool | None = models.BooleanField(null=True, default=None)
-    feature_ref_is_name: bool | None = models.BooleanField(null=True, default=None)
+    label_ref_is_name: bool | None = BooleanField(null=True, default=None)
+    feature_ref_is_name: bool | None = BooleanField(null=True, default=None)
