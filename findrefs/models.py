@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from django.core.validators import RegexValidator
 from django.db import models
 from django.db.models import CASCADE, PROTECT
 from lnschema_core import ids
@@ -47,11 +48,20 @@ class Reference(Record, CanValidate, TracksRun, TracksUpdates):
         null=True,
     )
     """A unique abbreviation for the reference."""
-    url: str | None = models.URLField(null=True)
+    url: str | None = models.URLField(null=True, blank=True)
     """URL linking to the reference."""
     pubmed_id: int | None = BigIntegerField(null=True)
     """A PudMmed ID."""
-    doi: int | None = CharField(null=True, db_index=True)
+    doi: int | None = CharField(
+        null=True,
+        db_index=True,
+        validators=[
+            RegexValidator(
+                regex=r"^(?:https?://(?:dx\.)?doi\.org/|doi:|DOI:)?10\.\d+/.*$",
+                message="Must be a DOI (e.g., 10.1000/xyz123 or https://doi.org/10.1000/xyz123)",
+            )
+        ],
+    )
     """Digital Object Identifier (DOI) for the reference."""
     text: str | None = TextField(null=True)
     """Text of the reference such as the abstract or the full-text to enable search."""
