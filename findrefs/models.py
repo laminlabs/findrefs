@@ -13,7 +13,7 @@ from lnschema_core.fields import (
 )
 from lnschema_core.models import (
     Artifact,
-    CanValidate,
+    CanCurate,
     Feature,
     LinkORM,
     Record,
@@ -23,7 +23,7 @@ from lnschema_core.models import (
 )
 
 
-class Reference(Record, CanValidate, TracksRun, TracksUpdates, ValidateFields):
+class Reference(Record, CanCurate, TracksRun, TracksUpdates, ValidateFields):
     """References such as a publication or document, with unique identifiers and metadata.
 
     Example:
