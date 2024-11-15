@@ -19,10 +19,11 @@ from lnschema_core.models import (
     Record,
     TracksRun,
     TracksUpdates,
+    ValidateFields,
 )
 
 
-class Reference(Record, CanValidate, TracksRun, TracksUpdates):
+class Reference(Record, CanValidate, TracksRun, TracksUpdates, ValidateFields):
     """References such as a publication or document, with unique identifiers and metadata.
 
     Example:
