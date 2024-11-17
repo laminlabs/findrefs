@@ -132,7 +132,7 @@ class Migration(migrations.Migration):
             options={
                 "abstract": False,
             },
-            bases=(lnschema_core.models.CanValidate, models.Model),
+            bases=(lnschema_core.models.CanCurate, models.Model),
         ),
         migrations.AddField(
             model_name="artifactreference",
