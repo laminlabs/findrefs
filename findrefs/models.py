@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from typing import TYPE_CHECKING
+
 from django.db import models
 from django.db.models import CASCADE, PROTECT
 from lnschema_core import ids
@@ -12,6 +14,9 @@ from lnschema_core.models import (
     TracksRun,
     TracksUpdates,
 )
+
+if TYPE_CHECKING:
+    from datetime import datetime
 
 
 class Reference(Record, CanValidate, TracksRun, TracksUpdates):
@@ -45,8 +50,16 @@ class Reference(Record, CanValidate, TracksRun, TracksUpdates):
         max_length=255, null=True, default=None, db_index=True
     )
     """Digital Object Identifier (DOI) for the reference."""
-    text: str | None = models.TextField(null=True, default=None)
-    """Text of the reference such as the abstract or the full-text to enable search."""
+    description: str = models.TextField(null=True, default=None)
+    """Description of the reference."""
+    authors: list[str] | None = models.JSONField(null=True, default=None)
+    """List of authors for the reference."""
+    abstract: str | None = models.TextField(null=True, default=None)
+    """Abstract text of the reference ."""
+    full_text: str | None = models.TextField(null=True, default=None)
+    """Full text of the reference."""
+    published_at: datetime = models.DateTimeField(null=True, default=None)
+    """Publication date."""
     artifacts: Artifact = models.ManyToManyField(
         Artifact, through="ArtifactReference", related_name="references"
     )
